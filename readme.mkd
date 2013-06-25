@@ -1,0 +1,20 @@
+# Assets Manager
+
+For when you need to dynamically load a bunch of images, or just wait for them
+to be done.
+
+    var manager = new AssetManager();
+    manager.queueDownload('http://www.google.com/favicon.ico');
+    manager.queueDownload('http://www.facebook.com/favicon.ico');
+    manager.downloadAll(function(){
+       console.log("all is well");
+       console.log("I has it", manager.getAsset("http://www.mediapop.co/favicon.ico"));
+    });
+
+    manager.download("http://www.mediapop.co/favicon.ico", function(){
+        console.log("Zomg call download as you need");
+    });
+
+    manager.downloadAll(function(){
+        console.log("Fires instantly if need be!");
+    });
