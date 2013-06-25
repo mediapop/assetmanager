@@ -19,7 +19,10 @@ function AssetManager(){
             var image = new Image();
             var imageLoadedHandler = function(){
                 cache[path] = image;
-                queue = queue.splice(queue.indexOf(path), 1);
+                var queueItem = queue.indexOf(path);
+                if(queueItem !== -1){
+                    queue.splice(queueItem, 1);
+                }
                 if(cb){
                     cb(image);
                 }
